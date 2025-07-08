@@ -13,6 +13,9 @@ func fizzbuzz(num int) string {
 	if num%5 == 0 {
 		output += "Buzz"
 	}
+	if num%7 == 0 {
+		output += "Bang"
+	}
 	if output == "" {
 		output = strconv.Itoa(num)
 	}
