@@ -3,26 +3,27 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func fizzbuzz(num int) string {
-	output := ""
+	var output []string
 	if num%3 == 0 {
-		output += "Fizz"
+		output = append(output, "Fizz")
 	}
 	if num%5 == 0 {
-		output += "Buzz"
+		output = append(output, "Buzz")
 	}
 	if num%7 == 0 {
-		output += "Bang"
+		output = append(output, "Bang")
 	}
 	if num%11 == 0 {
-		output = "Bong"
+		output = []string{"Bong"}
 	}
-	if output == "" {
-		output = strconv.Itoa(num)
+	if len(output) == 0 {
+		output = []string{strconv.Itoa(num)}
 	}
-	return output
+	return strings.Join(output, "")
 }
 
 // This is our main function, this executes by default when we run the main package.
