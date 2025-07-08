@@ -1,10 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
+
+func fizzbuzz(num int) string {
+	output := ""
+	if num%3 == 0 {
+		output += "Fizz"
+	}
+	if num%5 == 0 {
+		output += "Buzz"
+	}
+	if output == "" {
+		output = strconv.Itoa(num)
+	}
+	return output
+}
 
 // This is our main function, this executes by default when we run the main package.
 func main() {
-	fmt.Println("Hello, World!")
-
-	// Put your code here...
+	for i := 1; i <= 100; i++ {
+		fmt.Println(fizzbuzz(i))
+	}
 }
