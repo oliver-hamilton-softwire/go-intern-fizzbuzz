@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+func reverse(list []string) []string {
+	var res []string
+	for i := len(list) - 1; i >= 0; i-- {
+		res = append(res, list[i])
+	}
+	return res
+}
+
 func fizzbuzz(num int) string {
 	var output []string
 	if num%3 == 0 {
@@ -39,6 +47,9 @@ func fizzbuzz(num int) string {
 			output = append(output, "Fezz")
 			fezzAdded = true
 		}
+	}
+	if num%17 == 0 {
+		output = reverse(output)
 	}
 	if len(output) == 0 {
 		output = []string{strconv.Itoa(num)}

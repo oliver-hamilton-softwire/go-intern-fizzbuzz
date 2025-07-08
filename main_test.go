@@ -13,6 +13,7 @@ var tests = []Test{
 	{3 * 7, "FizzBang"},
 	{3 * 11, "Bong"},
 	{11 * 13, "FezzBong"},
+	{3 * 5 * 17, "BuzzFizz"},
 }
 
 func TestFizzbuzz(t *testing.T) {
