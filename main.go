@@ -38,26 +38,35 @@ func getNum() int {
 	return num
 }
 
-func fizzbuzz(num int) string {
+func contains(list []string, target string) bool {
+	for _, word := range list {
+		if word == target {
+			return true
+		}
+	}
+	return false
+}
+
+func fizzbuzz(num int, args []string) string {
 	var output []string
-	if num%3 == 0 {
+	if (len(args) == 0 || contains(args, "3")) && num%3 == 0 {
 		output = append(output, "Fizz")
 	}
-	if num%5 == 0 {
+	if (len(args) == 0 || contains(args, "5")) && num%5 == 0 {
 		output = append(output, "Buzz")
 	}
-	if num%7 == 0 {
+	if (len(args) == 0 || contains(args, "7")) && num%7 == 0 {
 		output = append(output, "Bang")
 	}
-	if num%11 == 0 {
+	if (len(args) == 0 || contains(args, "11")) && num%11 == 0 {
 		output = []string{"Bong"}
 	}
 	// Add Fezz immediately in front of the first thing beginning with B
-	if num%13 == 0 {
+	if (len(args) == 0 || contains(args, "13")) && num%13 == 0 {
 		i := find(output, func(word string) bool { return word[0] == 'B' })
 		output = slices.Concat(output[:i], []string{"Fezz"}, output[i:])
 	}
-	if num%17 == 0 {
+	if (len(args) == 0 || contains(args, "17")) && num%17 == 0 {
 		output = reverse(output)
 	}
 	if len(output) == 0 {
@@ -70,6 +79,6 @@ func fizzbuzz(num int) string {
 func main() {
 	maxnum := getNum()
 	for i := 1; i <= maxnum; i++ {
-		fmt.Println(fizzbuzz(i))
+		fmt.Println(fizzbuzz(i, os.Args[1:]))
 	}
 }

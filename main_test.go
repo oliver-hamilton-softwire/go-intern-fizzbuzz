@@ -18,7 +18,7 @@ var tests = []Test{
 
 func TestFizzbuzz(t *testing.T) {
 	for _, test := range tests {
-		result := fizzbuzz(test.num)
+		result := fizzbuzz(test.num, []string{})
 		if result != test.expected {
 			t.Errorf("incorrect output for num %d got: %s expected: %s", test.num, result, test.expected)
 		}
