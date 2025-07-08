@@ -15,6 +15,15 @@ func reverse(list []string) []string {
 	return res
 }
 
+func find(list []string, testFunc func(string) bool) int {
+	for i, word := range list {
+		if testFunc(word) {
+			return i
+		}
+	}
+	return len(list)
+}
+
 func fizzbuzz(num int) string {
 	var output []string
 	if num%3 == 0 {
@@ -31,22 +40,8 @@ func fizzbuzz(num int) string {
 	}
 	// Add Fezz immediately in front of the first thing beginning with B
 	if num%13 == 0 {
-		var fezzAdded = false
-		for i, word := range output {
-			if word[0] == 'B' {
-				//temp := slices.(output[:i], "Fezz")
-				//fmt.Println(temp)
-				//fmt.Println(output)
-				output = slices.Concat(output[:i], []string{"Fezz"}, output[i:])
-				//fmt.Println(output)
-				fezzAdded = true
-				break
-			}
-		}
-		if !fezzAdded {
-			output = append(output, "Fezz")
-			fezzAdded = true
-		}
+		i := find(output, func(word string) bool { return word[0] == 'B' })
+		output = slices.Concat(output[:i], []string{"Fezz"}, output[i:])
 	}
 	if num%17 == 0 {
 		output = reverse(output)
